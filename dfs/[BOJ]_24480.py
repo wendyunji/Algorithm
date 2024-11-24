@@ -1,5 +1,7 @@
+# 기본적으로 아래의 3줄을 항상 작성해줄 것
 import sys
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**6)    # recursive error
+input = sys.stdin.readline      # timeout
 
 n, e, r = map(int, input().split())
 
