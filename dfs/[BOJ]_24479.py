@@ -1,11 +1,15 @@
 # 특이점 : 시작 정점이 따로 있음 & 방문 순서를 출력함 & 낮은 번호부터 탐색
 
+import sys
+sys.setrecursionlimit(10**6)
+input = sys.stdin.readline
+
 n, e, r = map(int, input().split())
 
 graph = [[] for _ in range(n+1)]
 visited = [0 for _ in range(n+1)]
 
-for _  in range(e):
+for _  in range(n+1):
     a, b = map(int, input().split())
     graph[a].append(b)
     graph[b].append(a)
