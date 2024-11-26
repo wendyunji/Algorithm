@@ -1,48 +1,47 @@
+import sys
+sys.setrecursionlimit(10**6)
+input = sys.stdin.readline
+
+
 n = int(input())
 
-mp = [[] for _ in range(n)]
+graph = []
+for _ in range(n):
+    graph.append(list(input()))
+
+test = [0]
+
+def dfs(x,y):
+    if x >= n or y >= n or x < 0 or y < 0:
+        return False
+
+    if graph[x][y] == '1':
+        test[result] += 1
+        graph[x][y] = '0'
+
+        dfs(x,y+1)
+        dfs(x,y-1)
+        dfs(x+1,y)
+        dfs(x-1,y)
+
+        return True
+
+    return False
+
+dx, dy = [1,-1,0,0], [0,0,1,-1]
+
+result = 0
 
 for i in range(n):
-    a = input()
     for j in range(n):
-        mp[i].append(int(a[j]))
+        if dfs(i,j) == True:
+            test.append(0)
+            result += 1
 
-print(mp)
+print(result)
 
-visited = [[0 for _ in range(n)] for _ in range(n)]
+test.pop()
+test.sort()
 
-dx = [0,1,0,-1]
-dy = [1,0,-1,0]
-
-def dfs(mp, x, y, visited):
-    if mp[x][y] == 0:
-        visited[x][y] = -1
-    else:
-        visited[x][y] = 1
-
-    for i in range(4):
-        nx = x+dx[i]
-        ny = y+dy[i]
-
-        if nx > 0 and ny > 0 and nx < n and ny < n:
-            if mp[nx][ny] == 0:
-                visited[x][y] = -1
-            else:
-                visited[x][y] = 1
-                if visited[nx][ny] == 0:
-                    dfs(mp, nx, ny, visited)
-
-dfs(mp, 0, 0, visited)
-
-print(visited)
-
-    
-
-
-
-# def dfs(graph, v, visited):
-#     visited[v] = 1
-
-#     for i in graph[v]:
-#         if visited[i] == 0:
-#             dfs(graph, i, visited)
+for t in test:
+    print(t)
