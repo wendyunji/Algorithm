@@ -4,7 +4,7 @@ input = sys.stdin.readline
 from collections import deque
 
 n, k = map(int, input().split())
-graph = [-1 for _ in range(100000)]
+graph = [-1 for _ in range(100001)]
 
 
 def bfs(x):
