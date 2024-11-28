@@ -6,7 +6,7 @@ input = sys.stdin.readline
 t = int(input())
 
 dx = [-2, -1, 2, 1, -2, -1, 2, 1]
-dy = [1, 2, 1, 2, 1, 2, 1, 2]
+dy = [1, 2, 1, 2, -1, -2, -1, -2]
 counts = []
 def bfs(x,y):
     global count
@@ -26,17 +26,18 @@ def bfs(x,y):
 
 
             # 최단 거리 기록이 없으면 기록
-            if graph[nx][ny] == 0:
+            if graph[nx][ny] == -1:
                 queue.append((nx, ny))
                 graph[nx][ny] = graph[x][y] + 1
 
-    return graph[ey][ex]
+    return graph[ex][ey]
 
 for _ in range(t):
     l = int(input())
     sx, sy = map(int, input().split())
     ex, ey = map(int, input().split())
-    graph = [[0 for _ in range(l)] for _ in range(l)]
+    graph = [[-1 for _ in range(l)] for _ in range(l)]
+    graph[sx][sy] = 0
     counts.append(bfs(sx, sy))
     # print(graph)
 
