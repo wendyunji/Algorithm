@@ -43,4 +43,8 @@ for i in range(n):
             count = 0
 
 print(len(counts))
-print(max(counts))
+
+if len(counts) == 0:
+    print(0)
+else:
+    print(max(counts))
