@@ -8,16 +8,21 @@ targets = list(map(int, sys.stdin.readline().rstrip().split()))
 
 array.sort()
 
+array_dict = {}
+
+for i in array:
+    if i in array_dict:
+        array_dict[i] += 1
+    else:
+        array_dict[i] = 1
+
 def bs(array, target, start, end):
-    global count
 
     while start <= end:
         mid = (start + end) // 2
 
         if target == array[mid]:
-            del array[mid]
-            count += 1
-            return True
+            return array_dict[target]
         
         elif target < array[mid]:
             end = mid - 1
@@ -25,11 +30,7 @@ def bs(array, target, start, end):
         else:
             start = mid + 1
 
-    return False
+    return 0
 
 for target in targets:
-    result = True
-    count = 0
-    while result == True:
-        result = bs(array, target, 0, len(array)-1)
-    print(count, end=' ')
+    print(bs(array, target, 0, len(array)-1), end=' ')
