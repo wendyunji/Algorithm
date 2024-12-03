@@ -1,20 +1,21 @@
-# 이게 왜 이진 탐색?
-
 x, y = map(int, input().split())
 
-# 아래의 숫자 보다 큰 숫자 찾기
-# a = (x*x) / ((99*x) - (100*y))
-r = (x*x) % ((99*x) - (100*y))
-z = (x*x) // ((99*x) - (100*y))
+start = 0
+end = x     # x가 분자
+a = x       # a는 더해지는 수 이걸 x로 세팅 y+x/x+x = 적어도 0.5 이상이니깐 최대치
 
-if x == y:
+# 예외 조건
+if ((100*y) // x) >= 99:
     print(-1)
-elif r == 0:
-    print(z)
+
 else:
-    print(z+1)
+    while start <= end:
+        mid = (start+end) // 2    # 최대치의 중간에서 시작함 그래서 계속 임계점을 찾아나가는 거임
+        if ((100*(y+mid)) // (x+mid)) > ((100*y) // x):
+            a = mid               # 근데 완전히 같아질 수는 없으니 큰 값에서 계속 a를 갱신 시켜 나감 그러다 start랑 end가 같아지면 출력
+            end = mid - 1
+        else:
+            start = mid + 1
+        print(mid)
 
-
-
-# k = 2
-# print((47+k) / (53+k))
+    print(a)
