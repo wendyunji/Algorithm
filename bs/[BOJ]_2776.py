@@ -15,7 +15,7 @@ def bs(array, target, start, end):
 
     return 0
 
-for _ in t:
+for _ in range(t):
     n = int(input())
     array = list(map(int, sys.stdin.readline().rstrip().split()))
     m = int(input())
