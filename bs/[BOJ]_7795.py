@@ -7,14 +7,13 @@ def bs(array, target, start, end):
     while start <= end:
         mid = (start+end) // 2
 
-        if array[mid] >  target:
-            a = mid
-            end = mid - 1
-        # start와 end가 같아질때까지 찾아내기
-        else:
+        if array[mid] <=  target:
             start = mid + 1
+        
+        else:
+            end = mid - 1
     
-    return a
+    return start
 
 sums = []
 
@@ -24,6 +23,7 @@ for _ in range(t):
     targets = list(map(int, sys.stdin.readline().rstrip().split()))
 
     array.sort()
+    targets.sort()
 
     sum = 0
 
