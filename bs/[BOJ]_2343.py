@@ -8,30 +8,34 @@ start = max(array)
 end = sum(array)
 
 def check(mid):
-    
+    blues = [0]
     i = 0
     # mid가 될 때까지 더해서 담아두기
     for a in array:
-        if (blues[i] + a) >= mid:
-            blues.append(0)
-            i += 1    
+        if (blues[i] + a) > mid:
+            i += 1  
             if i >= m:
-                return False
+                return False            
+              
+            blues.append(0)
+
         blues[i] += a
 
-    return True
+    return blues
 
+result = []
 
 while start <= end:
     mid = (start + end) // 2
-    blues = [0]
+    blues = check(mid)
 
-    if check(mid) == True:
+    if blues != False:
+        result = blues
         end = mid - 1
+        
     else:
         start = mid + 1
 
-
-print(end)
+print(max(result))
 
         
