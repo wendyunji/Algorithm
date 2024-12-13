@@ -2,8 +2,6 @@ n, m = map(int, input().split())
 
 array = list(map(int, input().split()))
 
-array.sort()
-
 start = max(array)
 end = sum(array)
 
@@ -29,7 +27,7 @@ while start <= end:
     mid = (start + end) // 2
     blues = check(mid)
 
-    if blues != False:
+    if blues:
         result = blues
         end = mid - 1
         
