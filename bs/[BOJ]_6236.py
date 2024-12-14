@@ -5,8 +5,8 @@ array = []
 for _ in range(n):
     array.append(int(input()))
 
-start = min(array)
-end = max(array)
+start = max(array)
+end = sum(array)
 
 cost = [0]
 
