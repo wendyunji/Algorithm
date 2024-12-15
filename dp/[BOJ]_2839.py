@@ -1,23 +1,18 @@
 n = int(input())
 
-d = [0] * 19
+d = [-1] * 5001
 
-for i in range(4,n+1):
+d[3] = 1
+d[5] = 1
 
-    d[i] = 5001
+for i in range(6,n+1):
 
-    if ((i - 5) == 0) or ((i - 5) == 3):
+    if i % 5 == 0:
         d[i] = d[i-5] + 1
-    
-    if (i-3) == 0:
+    elif i % 3 == 0:
         d[i] = d[i-3] + 1
+    elif d[i-5] > 0 and d[i-3] > 0:
+        d[i] = min(d[i-3], d[i-5]) + 1
 
-    # if i % 3 == 0:
-    #     d[i] = min(d[i], d[i//3] + 1)
-
-    # if i % 5 == 0:
-    #     d[i] = min(d[i], d[i//5] + 1)
-
-print(d)
+# print(d)
 print(d[n])
-
