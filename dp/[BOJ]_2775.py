@@ -17,5 +17,4 @@ for _ in range(T):
         for y in range(2, 15):
             dp[x][y] = dp[x][y-1] + dp[x-1][y]
 
-    # 5. 원하는 형식으로 출력
     print(dp[k][n])
