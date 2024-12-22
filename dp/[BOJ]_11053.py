@@ -1,23 +1,17 @@
+# 입력
 n = int(input())
-
 array = list(map(int, input().split()))
 
-d =[[array[0]]]
+# DP 테이블 초기화 (각 위치에서의 LIS 길이)
+dp = [1] * n
 
-for a in range(1, len(array)):
-    b = array[a]
-    k = len(d)
-    for i in d:
-        if i[-1] < b:
-            i.append(b)
-    if len(d) <= k:
-        d.append([b])
+# LIS 계산
+for i in range(n):
+    for j in range(i):
+        if array[j] < array[i]:  # 이전 원소가 현재 원소보다 작다면
+            dp[i] = max(dp[i], dp[j] + 1)
 
-m = 0
+print(dp)
 
-for i in d:
-    if len(i) > m:
-        m = len(i)
-
-print(m)        
-
+# 결과 출력
+print(max(dp))  # LIS의 최대 길이
