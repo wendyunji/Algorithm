@@ -1,22 +1,20 @@
-print(67863915/29)
-print(2340135/5)
-print(468027/3)
-print(156009/3)
-print(52003/7)
-print(7429/17)
-print(437/19)
+t = int(input())
 
-cnt1 = 1
-for i in range(17,30):
-    print(i)
-    cnt1 *= i
+results = []
 
-print(cnt1)
+for _ in range(t):
 
-cnt = 1
-for i in range(1,14):
-    print(i)
-    cnt *= i
+    a, b = map(int, input().split())
 
-print(cnt)
-print(cnt1/cnt)
+    cnt1 = 1
+    for i in range(b-a+1,b+1):
+        cnt1 *= i
+
+    cnt = 1
+    for i in range(1,a+1):
+        cnt *= i
+
+    results.append(int(cnt1/cnt))
+
+for result in results:
+    print(result)
